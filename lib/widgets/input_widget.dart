@@ -1,3 +1,4 @@
+import 'package:delivery_app/utils/data/color_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -42,16 +43,22 @@ class InputWidget extends StatelessWidget {
       ),
       cupertino: (context, platform) => CupertinoTextFieldData(
           placeholder: placeHolder,
+          style: const TextStyle(color: Colors.black),
+          padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.5.h),
           suffix: endWidget != null
-              ? GestureDetector(
-                  onTap: () {
-                    if (changeHideCharacterStatus!() != null) {
-                      changeHideCharacterStatus!();
-                    }
-                  },
-                  child: Icon(endWidget))
+              ? Padding(
+                  padding: EdgeInsets.only(right: 5.w),
+                  child: GestureDetector(
+                      onTap: () {
+                        if (changeHideCharacterStatus!() != null) {
+                          changeHideCharacterStatus!();
+                        }
+                      },
+                      child: Icon(endWidget)),
+                )
               : const SizedBox(),
           decoration: BoxDecoration(
+            border: Border.all(color: ColorsConfig.primaryColor),
             borderRadius: BorderRadius.circular(10.sp),
           )),
       onChanged: (text) {

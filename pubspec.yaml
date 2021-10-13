@@ -41,6 +41,7 @@ dependencies:
   flutter_platform_widgets: ^1.9.5
   logger: ^1.1.0
   fluttertoast: ^8.0.8
+  email_validator: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +66,14 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+
+  fonts:
+    - family: Helvetica
+      fonts:
+        - asset: assets/Helvetica-Font/Helvetica.ttf
+        - asset: assets/Helvetica-Font/Helvetica-Bold.ttf
+        - asset: assets/Helvetica-Font/helvetica-light-587ebe5a59211.ttf
+   
     
   # To add assets to your application, add an assets section, like this:
   # assets:

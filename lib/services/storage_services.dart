@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:delivery_app/models/login.dart';
 import 'package:delivery_app/utils/keys.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -10,11 +13,13 @@ class StorageService {
   }
 
   /// local DATA fetching methods
-  static String fetchUser() {
+  static Login fetchUser() {
+    Login login = Login();
     if (_box.read(PrimaryKeys.SAVE_USER) != null) {
-      return _box.read(PrimaryKeys.SAVE_USER);
+      login = Login.fromJson(json.decode(_box.read(PrimaryKeys.SAVE_USER)));
+      return login;
     }
-    return '';
+    return Login();
   }
 
   /// local DATA Deleting methods

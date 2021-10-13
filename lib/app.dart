@@ -21,6 +21,9 @@ class DeliveryApp extends StatelessWidget {
               routes: AppRoutes.applicationRoutes(),
               initialRoute: AppRoutes.SPLASH_SCREEN_ROUTE,
               debugShowCheckedModeBanner: false,
+              theme: const CupertinoThemeData(
+                  textTheme: CupertinoTextThemeData(
+                      textStyle: TextStyle(fontFamily: 'Helvetica'))),
               localizationsDelegates: const [
                 DefaultMaterialLocalizations.delegate,
                 DefaultCupertinoLocalizations.delegate,
@@ -32,6 +35,7 @@ class DeliveryApp extends StatelessWidget {
               routes: AppRoutes.applicationRoutes(),
               initialRoute: AppRoutes.SPLASH_SCREEN_ROUTE,
               debugShowCheckedModeBanner: false,
+              theme: ThemeData(fontFamily: 'Helvetica'),
               localizationsDelegates: const [
                 DefaultMaterialLocalizations.delegate,
                 DefaultCupertinoLocalizations.delegate,

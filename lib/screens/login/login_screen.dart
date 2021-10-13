@@ -1,7 +1,9 @@
 import 'package:delivery_app/controllers/login_controller.dart';
 import 'package:delivery_app/utils/data/color_config.dart';
+import 'package:delivery_app/utils/events_messager/toast_message.dart';
 import 'package:delivery_app/widgets/input_widget.dart';
 import 'package:delivery_app/widgets/text_widget.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -30,13 +32,19 @@ class LoginScreen extends StatelessWidget {
         child: PlatformScaffold(
           appBar: PlatformAppBar(
             backgroundColor: ColorsConfig.primaryColor,
-            leading: const Icon(Icons.close),
+            leading: const Icon(Icons.close,color: Colors.white,),
             material: (context, platform) => MaterialAppBarData(
               flexibleSpace: Center(
                 child: Image.asset(
                   'assets/images/initial_logo.png',
                   fit: BoxFit.cover,
                 ),
+              ),
+            ),
+            cupertino: (context, platform) => CupertinoNavigationBarData(
+              title: Image.asset(
+                'assets/images/initial_logo.png',
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -114,7 +122,12 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10.sp),
                         color: ColorsConfig.primaryColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        bool valid = _fieldsValidator();
+                        if(valid) {
+                          _loginController.loginUser();
+                        }
+                      },
                     ),
                   ),
                   SizedBox(
@@ -139,5 +152,18 @@ class LoginScreen extends StatelessWidget {
         ),
       );
     });
+  }
+
+  bool _fieldsValidator() {
+    if(EmailValidator.validate(_loginController.emailId.value)){
+      if(_loginController.pwd.isNotEmpty){
+        return true;
+      }else {
+        showToast('Please Enter valid Password');
+      }
+    }else {
+      showToast('Please Enter valid Email ID');
+    }
+    return false;
   }
 }

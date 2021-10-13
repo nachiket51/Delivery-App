@@ -19,7 +19,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   /// auto-login function
   void navigateUser() {
-    if (StorageService.fetchUser().isNotEmpty) {
+    if (StorageService.fetchUser().id != null) {
       AppRoutes.navigatePage(
         pageRoute: AppRoutes.DASHBOARD_SCREEN_ROUTE,
         pageNav: PageNav.offAll,
